@@ -10,10 +10,10 @@ export default class NewStudentForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    //this.addStudent = this.addStudent.bind(this);
   }
 
   handleChange(evt) {
-    //what do we doooo...
     this.setState({
       [evt.target.name]: evt.target.value
     });
@@ -22,7 +22,8 @@ export default class NewStudentForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     const { firstname, lastname, email } = this.state;
-    // axios.post("/here?", { firstname, lastname, email });
+    console.log(this.state);
+    this.props.addStudent({ firstName: firstname, lastName: lastname, email });
     this.setState({
       //after submit clears everything to empty string again
       firstname: "",
@@ -32,7 +33,8 @@ export default class NewStudentForm extends Component {
   }
 
   render() {
-    console.log("state", this.state);
+    // console.log("state", this.state);
+    const addStudent = this.props;
     return (
       <div>
         <form id="form">
